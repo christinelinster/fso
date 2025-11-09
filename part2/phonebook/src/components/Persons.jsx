@@ -1,7 +1,12 @@
-const Persons = ({ persons }) => {
+const Persons = ({ persons, onDelete }) => {
+    console.log('Persons.jsx', persons)
+
     return (
         <div>
-            {persons.map(person => <p key={person.name}>{person.name} {person.number}</p>)}
+            {persons.map(person =>
+                <p key={person.name}>{person.name} {person.number}
+                    <button onClick={() => onDelete(person.id)}>delete</button>
+                </p>)}
         </div>
     )
 }
