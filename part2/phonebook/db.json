@@ -1,34 +1,9 @@
 {
   "persons": [
     {
-      "name": "Ada Lovelace",
-      "number": "12345",
-      "id": "2"
-    },
-    {
-      "name": "Dan Abramov",
-      "number": "12-43-234345",
-      "id": "3"
-    },
-    {
       "name": "Mary Poppendieck",
       "number": "39-23-6423122",
       "id": "4"
-    },
-    {
-      "id": "08e2",
-      "name": "new person",
-      "number": "12345"
-    },
-    {
-      "id": "1832",
-      "name": "this is the name",
-      "number": "this is the number"
-    },
-    {
-      "id": "fd4a",
-      "name": "number",
-      "number": ""
     }
   ]
 }

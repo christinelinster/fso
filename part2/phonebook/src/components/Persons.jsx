@@ -1,6 +1,4 @@
 const Persons = ({ persons, onDelete }) => {
-    console.log('Persons.jsx', persons)
-
     return (
         <div>
             {persons.map(person =>
