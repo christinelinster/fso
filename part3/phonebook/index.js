@@ -46,6 +46,7 @@ app.get('/api/persons/:id', (request, response) => {
     if (person) {
         response.json(person)
     } else {
+        response.statusMessage = "Person does not exist."
         response.status(404).end()
     }
 })
@@ -90,7 +91,7 @@ app.post('/api/persons', (request, response) => {
 app.get('/info', (request, response) => {
     const numberOfPeople = persons.length
     const currDate = new Date()
-    response.send(`Phonebook has info for ${numberOfPeople} people.<br/>${currDate}`)
+    response.send(`Phonebook has info for ${numberOfPeople} people.<br/><br/>${currDate}`)
 })
 
 const unknownEndpoint = (request, response) => {
