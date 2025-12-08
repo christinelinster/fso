@@ -6,9 +6,9 @@ import noteService from './services/notes'
 
 const App = () => {
   const [notes, setNotes] = useState([])
-  const [newNote, setNewNote] = useState('a new note...')
+  const [newNote, setNewNote] = useState('')
   const [showAll, setShowAll] = useState(true)
-  const [errorMessage, setErrorMessage] = useState('some error happened...')
+  const [errorMessage, setErrorMessage] = useState(null)
 
   useEffect(() => {
     noteService
@@ -26,7 +26,7 @@ const App = () => {
     noteService
       .update(id, changedNote)
       .then(returnedNote => {
-        setNotes(notes.map(note => note.id === id ? returnedNote : note))
+        setNotes(notes.map(note => note.id !== id ? note: returnedNote))
       })
       .catch(error => {
         setErrorMessage(
