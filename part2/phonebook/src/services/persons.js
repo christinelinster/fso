@@ -1,5 +1,4 @@
 import axios from 'axios'
-
 const baseUrl = '/api/persons'
 
 const getAllPeople = () => {
