@@ -4,7 +4,6 @@ if (process.argv.length < 3) {
     console.log('give password as argument')
     process.exit(1)
 }
-
 const password = process.argv[2]
 const url = `mongodb+srv://fullstack:${password}@cluster0.xobupea.mongodb.net/noteApp?appName=Cluster0`
 
