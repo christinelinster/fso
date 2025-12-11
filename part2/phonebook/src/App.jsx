@@ -84,7 +84,7 @@ const App = () => {
     if (window.confirm(`Delete ${selectedPerson.name} ?`)) {
       personsService
         .deletePerson(id)
-        .then(returnedPerson => setPersons(persons.filter(person => person.id !== returnedPerson.id)))
+        .then(setPersons(persons.filter(person => person.id !== id)))
     }
 
   }

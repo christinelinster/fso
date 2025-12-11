@@ -4,7 +4,6 @@ const baseUrl = '/api/persons'
 const getAllPeople = () => {
     const request = axios.get(baseUrl)
     return request.then(response => response.data)
-
 }
 
 const createPerson = (newPerson) => {
