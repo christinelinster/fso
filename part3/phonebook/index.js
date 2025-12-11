@@ -2,11 +2,8 @@ require('dotenv').config()
 const express = require('express')
 const morgan = require('morgan')
 const Person = require('./models/person')
-const person = require('./models/person')
-const note = require('../backend/models/note')
 
 const app = express()
-
 
 morgan.token('content', (req, res) => JSON.stringify(req.body))
 
@@ -48,14 +45,8 @@ app.delete('/api/persons/:id', (request, response) => {
             next(error)
         })
 })
-app.post('/api/persons', (request, response) => {
+app.post('/api/persons', (request, response, next) => {
     const body = request.body
-
-    if (!body.name && !body.number) {
-        return response.status(400).json({
-            error: 'content missing'
-        })
-    }
 
     const person = new Person({
         name: body.name,
@@ -106,6 +97,8 @@ const errorHandler = (error, request, response, next) => {
     console.log(error.message)
     if (error.name === 'CastError') {
         return response.status(400).send({ error: 'malformatted id' })
+    } else if (error.name === 'ValidationError') {
+        return response.status(400).json({error: error.message})
     }
     next(error)
 }
