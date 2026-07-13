@@ -12,6 +12,8 @@ const errorHandler = (error, request, response, next) => {
 
     if (error.name === 'CastError') {
         return response.status(400).send({ error: 'malformatted id' })
+    } else if (error.name === 'ValidationError') {
+        return response.status(400).json({error: error.message})
     }
 
     next(error)
@@ -89,7 +91,7 @@ app.put('/api/persons/:id', (request, response, next) => {
 
             person.save().then(updatedPerson => {
                 response.json(updatedPerson)
-            })
+            }).catch(error => next(error))
         })
         .catch(error => next(error))
 })

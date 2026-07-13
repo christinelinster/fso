@@ -71,6 +71,9 @@ const App = () => {
         notifyWith(`Added ${returnedPerson.name}!`)
         clearForm()
       })
+      .catch(error => {
+        notifyWith(error.response.data.error, true)
+      })
 
   }
 
@@ -79,10 +82,14 @@ const App = () => {
 
     if (ok) {
       personService.deletePerson(person.id)
-        .then(returnedPerson => {
-          setPersons(persons.filter(person => person.id !== returnedPerson.id))
+        .then(() => {
+          setPersons(persons.filter(p => p.id !== person.id))
+          notifyWith(`Deleted ${person.name}`)
         })
-      notifyWith(`Deleted ${person.name}`)
+        .catch(error => {
+          notifyWith(error.response.data.server, true)
+        })
+
     }
   }
 
