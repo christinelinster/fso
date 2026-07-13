@@ -3,9 +3,9 @@ const mongoose = require('mongoose')
 // Example command: node mongo.js yourpassword Anna 040-1234556
 // node mongo.js yourpassword => should display all entries (length is 3)
 
-const arguments = process.argv
+const args = process.argv
 
-if (!arguments[2]) {
+if (!args[2]) {
   console.log('give password as argument')
   process.exit(1)
 }
@@ -23,7 +23,7 @@ const personSchema = new mongoose.Schema({
 
 const Person = mongoose.model('Person', personSchema)
 
-if (arguments.length === 3) {
+if (args.length === 3) {
   Person.find({}).then(result => {
     console.log('phonebook: ')
     result.forEach(person => {
@@ -33,11 +33,11 @@ if (arguments.length === 3) {
   })
 } else {
   const person = new Person({
-    name: arguments[3],
-    number: arguments[4] || 'no number'
+    name: args[3],
+    number: args[4] || 'no number'
   })
 
-  person.save().then(result => {
+  person.save().then(() => {
     console.log(`added ${person.name} ${person.number} to phonebook`)
     mongoose.connection.close()
   })
