@@ -9,7 +9,7 @@ const password = process.argv[2]
 const url = `mongodb+srv://linchristine19_db_user:${password}@cluster0.yyrqc8m.mongodb.net/noteApp?appName=Cluster0`
 
 mongoose.set('strictQuery', false)
-mongoose.connect(url, {family: 4})
+mongoose.connect(url, { family: 4 })
 
 const noteSchema = new mongoose.Schema({
   content: String,
